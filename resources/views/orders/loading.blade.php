@@ -18,7 +18,7 @@
         <th scope="col">Order #</th>
         <th scope="col">Customer Name</th>
         <th scope="col">Customer No</th>
-        <th scope="col">Load Capacity</th>
+        <th scope="col">Vehicle VIN</th>
         <th scope="col">Destination</th>
         <th scope="col">Priority</th>
         <th scope="col">Status</th>
@@ -33,13 +33,13 @@
         <th scope="row">{{$value->id}}</th>
         <td>{{$value->customer_name}}</td>
         <td>{{$value->customer_phone}}</td>
-        <td>{{$value->load_capacity}}</td>
+        <td>{{$value->vehicle_vin}}</td>
         <td>{{$value->destination}}</td>
         <td>{{$value->priority}}</td>
         <td>{{$value->status}}</td>
         <td>{{$value->description}}</td>
         <td>{{$value->due_date}}</td>
-        <td><button class="btn btn-info" style="margin-right: 10px">Dispatch Order</button></td>
+        <td><a class="btn btn-info" style="margin-right: 10px" href="/dispatch_order/{{$value->id}}">Dispatch Order</a></td>
       </tr>  
       @endforeach
     </tbody>

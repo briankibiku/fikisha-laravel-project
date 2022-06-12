@@ -69,4 +69,51 @@ class CreateOrdersController extends Controller
             DB::update("update vehicles set status='Loading' where vehicle_vin='$request->vehicle_vin'");
             return redirect('/orders');        
         }
+
+        public function update_dispatch_order(Request $request)
+        {
+            $order =  Order::find($request->id);   
+            $order->customer_name=$request->customer_name;
+            $order->customer_phone=$request->customer_phone;
+            $order->load_capacity=$request->load_capacity;
+            $order->destination=$request->destination;
+            $order->priority=$request->priority;
+            $order->description=$request->description;
+            $order->due_date=$request->due_date;
+            $order->status="Dispatched";
+            $order->vehicle_vin=$request->vehicle_vin;
+            $order->save();
+            DB::update("update vehicles set status='On Transit' where vehicle_vin='$request->vehicle_vin'");
+            return redirect('/orders');  
+        }
+
+        public function dispatch_order($id)
+        {            
+            $order =  Order::find($id);
+            // dd($order->id);
+            return view('orders.dispatch', ['order' => $order] );
+        }
+
+        public function arrived_order($id)
+        {
+            $order =  Order::find($id);            
+            return view('orders.arrived', ['order' => $order] );
+        }
+
+        public function update_arrived_order(Request $request)
+        {
+            $order =  Order::find($request->id);   
+            $order->customer_name=$request->customer_name;
+            $order->customer_phone=$request->customer_phone;
+            $order->load_capacity=$request->load_capacity;
+            $order->destination=$request->destination;
+            $order->priority=$request->priority;
+            $order->description=$request->description;
+            $order->due_date=$request->due_date;
+            $order->status="Delivered";
+            $order->vehicle_vin=$request->vehicle_vin;
+            $order->save();
+            DB::update("update vehicles set status='Available' where vehicle_vin='$request->vehicle_vin'");
+            return redirect('/orders');  
+        }
 }

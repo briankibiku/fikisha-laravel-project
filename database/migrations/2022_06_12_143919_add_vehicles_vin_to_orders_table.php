@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('orders', function (Blueprint $table) {
-            $table->string('vehicle_vin');
+            $table->string('vehicle_vin')->default('Not assigned');
         });
     }
 

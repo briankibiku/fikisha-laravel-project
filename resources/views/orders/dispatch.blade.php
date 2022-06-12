@@ -2,7 +2,8 @@
 
 @section('content')
 <div style="margin:40px">
-        <h2>Allocate Orders</h2>
+   
+        <h2>Orders Ready for Dispatch </h2>
 
     <table class="table">
     <thead class="thead-dark">
@@ -16,7 +17,7 @@
         <th scope="col">Priority</th>
         <th scope="col">Status</th>
         <th scope="col">Description</th>
-        <th scope="col">Due Date</th>
+        <th scope="col">Due Date</th> 
       </tr>
     </thead>
     <tbody>
@@ -29,37 +30,11 @@
         <td>{{$order->priority}}</td>
         <td>{{$order->status}}</td>
         <td>{{$order->description}}</td>
-        <td>{{$order->due_date}}</td>
+        <td>{{$order->due_date}}</td> 
       </tr>  
     </tbody>
   </table>
-
-
-  <h4>Select vehicle to allocate order from list below</h4>
-
-  
-  <table class="table">
-    <thead class="thead-dark">
-      
-      <tr>
-        <th scope="col">Vehicle #</th>
-        <th scope="col">Vehicle VIN</th>
-        <th scope="col">Load Capacity</th>
-        <th scope="col">Status</th>
-        <th scope="col">Driver Number</th>
-        <th scope="col">Action</th>
-      </tr>
-    </thead>
-    <tbody>
-        @foreach ($vehicles as $value)
-      <tr>
-        <th scope="row">{{$value->id}}</th>
-        <td>{{$value->vehicle_vin}}</td>
-        <td>{{$value->load_capacity}}</td>
-        <td>{{$value->status}}</td>
-        <td>{{$value->driver_phone}}</td> 
-        <td>
-            <form method="post" action="/allocate_order">
+            <form method="post" action="/dispatch_order">
                     @csrf
 
 
@@ -142,29 +117,23 @@
                         </div>
                     </div>
 
+
                     <div class="">
         
                         <div class="">
-                            <input id="vehicle_vin" type="hidden" value="{{$value->vehicle_vin}}" class="form-control @error('vehicle_vin') is-invalid @enderror" name="vehicle_vin"  >
+                            <input id="vehicle_vin" type="hidden" value="{{$order->vehicle_vin}}" class="form-control @error('vehicle_vin') is-invalid @enderror" name="vehicle_vin"  >
         
                         </div>
                     </div>
 
 
-                    <div class="row mb-0">
-                        <div class="col-md-8 offset-md-4">
-                            <button type="submit" class="btn btn-info" >
-                                {{ __('Allocate') }}
-                            </button>
-                        </div>
-                    </div>
+                    <button type="submit" class="btn btn-info" >
+                        {{ __('Dispatch') }}
+                    </button>
+
+
                     {{-- <a class="btn btn-info" low type="submit"  style="margin-right: 10px" href="/allocate_order/{{$order->id}}">Allocate</a> --}}
             </form>
-        </td>
-      </tr>  
-      @endforeach
-    </tbody>
-  </table>
 
 </div>
 @endsection

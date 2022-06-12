@@ -62,3 +62,10 @@ Route::get('/create_order', [App\Http\Controllers\CreateOrdersController::class,
 Route::post('/create_order', [App\Http\Controllers\CreateOrdersController::class, 'create']);
 Route::get('/allocate_order/{id}', [App\Http\Controllers\CreateOrdersController::class, 'allocate_order']);
 Route::post('/allocate_order', [App\Http\Controllers\CreateOrdersController::class, 'update']);
+Route::get('/dispatch_order/{id}', [App\Http\Controllers\CreateOrdersController::class, 'dispatch_order']);
+Route::post('/dispatch_order', [App\Http\Controllers\CreateOrdersController::class, 'update_dispatch_order']);
+Route::get('/arrived_order/{id}', [App\Http\Controllers\CreateOrdersController::class, 'arrived_order']);
+Route::post('/arrived_order', [App\Http\Controllers\CreateOrdersController::class, 'update_arrived_order']);
+
+
+
