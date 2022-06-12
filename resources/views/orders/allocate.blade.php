@@ -162,7 +162,7 @@
                             </button>
                         </div>
                     </div>
-                    {{-- <a class="btn btn-info" type="submit"  style="margin-right: 10px" href="/allocate_order/{{$order->id}}">Allocate</a> --}}
+                    {{-- <a class="btn btn-info" low type="submit"  style="margin-right: 10px" href="/allocate_order/{{$order->id}}">Allocate</a> --}}
             </form>
         </td>
       </tr>  
