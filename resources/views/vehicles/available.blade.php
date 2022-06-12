@@ -3,8 +3,8 @@
 @section('content')
 <div style="margin:40px">
   <div class="d-flex flex-direction-row">
-    <a class="btn btn-info" href="/vehicles">All</a>
-    <a class="btn btn-light" href="/available_vehicles">Available</a>
+    <a class="btn btn-light" href="/vehicles">All</a>
+    <a class="btn btn-info" href="/available_vehicles">Available</a>
     <a class="btn btn-light" href="/loading_vehicles">Loading</a>
     <a class="btn btn-light" href="/on_transit_vehicles">On Transit</a>
   </div>
@@ -22,19 +22,16 @@
         <th scope="col">Load Capacity</th>
         <th scope="col">Status</th>
         <th scope="col">Driver Number</th>
-        <th scope="col">Action</th> 
       </tr>
     </thead>
     <tbody>
-      @foreach ($vehicles as $value)
+      @foreach ($available_vehicles as $value)
       <tr>
         <th scope="row">{{$value->id}}</th>
         <td>{{$value->vehicle_vin}}</td>
         <td>{{$value->load_capacity}}</td>
         <td>{{$value->status}}</td>
         <td>{{$value->driver_phone}}</td> 
-        <td><a class="btn btn-info" style="margin-right: 10px" href="/edit_vehicle/{{$value->id}}">Edit</a><a class="btn btn-danger" href="/delete_vehicle/{{$value->id}}">Delete</a></td>
-      
       </tr>  
       @endforeach
     </tbody>
